@@ -74,7 +74,6 @@ jobs:
         - KONG_DATABASE=none
     - stage: release
       install: skip
-      before_install: skip
       script:
       - make setup-kong-build-tools
       - pushd kong-build-tools && make setup-ci && popd
@@ -127,7 +126,7 @@ jobs:
       - make setup-kong-build-tools
       - pushd kong-build-tools && make setup-ci && popd
       - make release
-      env: PACKAGE_TYPE=apk RESTY_IMAGE_BASE=alpine RESTY_IMAGE_TAG=latest KONG_PACKAGE_NAME=${PWD##*/} KONG_VERSION=${TRAVIS_TAG}
+      env: PACKAGE_TYPE=apk RESTY_IMAGE_BASE=alpine RESTY_IMAGE_TAG=1 KONG_PACKAGE_NAME=${PWD##*/} KONG_VERSION=${TRAVIS_TAG}
       if: tag IS present AND tag ~= 1.
     - script:
       - make setup-kong-build-tools
