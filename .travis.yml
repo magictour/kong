@@ -149,7 +149,6 @@ jobs:
       if: tag IS present AND tag ~= 1.
     - stage: deploy daily build
       install: skip
-      before_install: skip
       script:
       - make setup-kong-build-tools
       - pushd kong-build-tools && make setup-ci && popd
